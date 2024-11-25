@@ -13,6 +13,7 @@ const AddBlog = () => {
       const blogData = {
         ...data,
         createdBy: user._id,
+        createdName: user.username,
       };
       const response = await axios.post(
         "http://localhost:5002/api/blog/create",

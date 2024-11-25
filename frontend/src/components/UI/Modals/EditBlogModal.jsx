@@ -13,6 +13,7 @@ const EditBlogModal = ({ setEditMode, selectedBlog, user }) => {
       content: selectedBlog.content,
       category: selectedBlog.category,
       imageURL: selectedBlog.imageURL,
+      isBanner: selectedBlog.isBanner,
     },
   });
 
@@ -49,6 +50,14 @@ const EditBlogModal = ({ setEditMode, selectedBlog, user }) => {
             <option value="eğitim">Eğitim</option>
             <option value="elektrik">Elektrik</option>
             <option value="kodlama">Kodlama</option>
+          </select>
+          <select
+            className="px-4 w-full py-2 rounded-md border outline-none"
+            type="text"
+            {...register("isBanner")}
+          >
+            <option value={true}>Evet</option>
+            <option value={false}>Hayır</option>
           </select>
           <input
             className="px-4 w-full py-2 rounded-md border outline-none"

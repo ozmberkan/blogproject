@@ -22,6 +22,14 @@ const blogSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Auth",
     },
+    createdName: {
+      type: String,
+      required: true,
+    },
+    isBanner: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
