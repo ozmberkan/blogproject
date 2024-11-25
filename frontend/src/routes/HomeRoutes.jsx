@@ -1,5 +1,6 @@
 import MainLayout from "~/layouts/MainLayout";
 import { roleLoader } from "~/loader/roleLoader";
+import AddBlog from "~/pages/Blogs/AddBlog";
 import Home from "~/pages/Home/Home";
 import { store } from "~/redux/store";
 
@@ -17,8 +18,8 @@ export const HomeRoutes = {
       // },
     },
     {
-      path: "/about",
-      element: <Home />,
+      path: "/add-blog",
+      element: <AddBlog />,
     },
   ],
 };

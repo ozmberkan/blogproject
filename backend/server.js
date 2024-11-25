@@ -5,6 +5,7 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const connectDB = require("./config/db.js");
 const AuthRoutes = require("./routes/auth.js");
+const BlogRoutes = require("./routes/blog.js");
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", AuthRoutes);
+app.use("/api/blog", BlogRoutes);
 
 connectDB()
   .then(() => {

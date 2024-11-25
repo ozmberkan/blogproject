@@ -26,11 +26,15 @@ const Navbar = () => {
       <Link to="/auth/login">
         <img src={Logo} className="w-10" />
       </Link>
-      <nav>
-        <Link className="font-semibold hover:underline">Bloglar</Link>
-      </nav>
+
       {user ? (
         <div className="flex gap-x-2 items-center">
+          <Link
+            to="/add-blog"
+            className="font-medium text-sm bg-black hover:bg-neutral-800 transition-colors px-4 py-2 rounded-full text-white"
+          >
+            Blog Oluştur
+          </Link>
           <Link
             to="/my-account"
             className="font-medium text-sm bg-black hover:bg-neutral-800 transition-colors px-4 py-2 rounded-full text-white"

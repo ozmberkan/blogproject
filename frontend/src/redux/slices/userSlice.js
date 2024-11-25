@@ -70,8 +70,8 @@ export const logoutService = createAsyncThunk("user/logout", async () => {
   }
 });
 
-export const counterSlice = createSlice({
-  name: "counter",
+export const userSlice = createSlice({
+  name: "user",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -112,6 +112,6 @@ export const counterSlice = createSlice({
   },
 });
 
-export const {} = counterSlice.actions;
+export const {} = userSlice.actions;
 
-export default counterSlice.reducer;
+export default userSlice.reducer;
