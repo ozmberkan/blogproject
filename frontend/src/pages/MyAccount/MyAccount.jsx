@@ -23,7 +23,7 @@ const MyAccount = () => {
     try {
       await axios.delete(`http://localhost:5002/api/blog/delete/${id}`);
       toast.success("Blog başarıyla silindi");
-      dispatch(getAllBlogs());
+      dispatch(getBlogByCreatedID(user._id));
     } catch (error) {
       console.log(error);
     }

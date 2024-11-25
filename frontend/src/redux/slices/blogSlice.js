@@ -4,6 +4,7 @@ import axios from "axios";
 const initialState = {
   blogs: [],
   myBlogs: [],
+  currentBlog: null,
   status: "idle",
 };
 
@@ -24,6 +25,21 @@ export const getBlogByCreatedID = createAsyncThunk(
       return res.data;
     } catch (error) {
       console.log(error);
+    }
+  }
+);
+
+export const getBlogDetailByID = createAsyncThunk(
+  "blogs/getBlogDetailByID",
+  async (id, { rejectWithValue }) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5002/api/blog/detail/${id}`
+      );
+      return res.data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
     }
   }
 );
@@ -52,6 +68,16 @@ export const blogSlice = createSlice({
         state.myBlogs = action.payload;
       })
       .addCase(getBlogByCreatedID.rejected, (state) => {
+        state.status = "failed";
+      })
+      .addCase(getBlogDetailByID.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(getBlogDetailByID.fulfilled, (state, action) => {
+        state.status = "success";
+        state.currentBlog = action.payload;
+      })
+      .addCase(getBlogDetailByID.rejected, (state) => {
         state.status = "failed";
       });
   },

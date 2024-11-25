@@ -79,10 +79,27 @@ const updateBlog = async (req, res) => {
   }
 };
 
+const getBlogDetailByID = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const blog = await Blog.findById(id);
+
+    if (!blog) {
+      return res.status(404).json({ message: "Blog bulunamadı" });
+    }
+
+    res.status(200).json(blog);
+  } catch (error) {
+    return res.status(500).json({ message: "Sunucu hatası!" });
+  }
+};
+
 module.exports = {
   createBlog,
   getAllBlogs,
   deleteBlog,
   updateBlog,
   getBlogsByUserID,
+  getBlogDetailByID,
 };
