@@ -5,29 +5,21 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { loginService } from "~/redux/slices/userSlice";
-import { useEffect } from "react";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, status } = useSelector((store) => store.user);
 
   const loginHandle = async (data) => {
     try {
       dispatch(loginService(data));
-      toast.success("Giriş başarılı.");
+      toast.success("Başarıyla giriş yaptınız.");
+      navigate("/");
     } catch (error) {
       toast.error("Bir hata oluştu. Lütfen tekrar deneyin.");
     }
   };
-
-  useEffect(() => {
-    if (status === "success") {
-      toast.success("Giriş başarılı.");
-      navigate("/");
-    }
-  }, [status]);
 
   return (
     <div className="flex flex-col justify-center items-center gap-5 z-20">

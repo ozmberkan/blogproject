@@ -52,7 +52,6 @@ export const getUser = createAsyncThunk(
           withCredentials: true,
         }
       );
-
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data.message);

@@ -2,6 +2,7 @@ import MainLayout from "~/layouts/MainLayout";
 import { roleLoader } from "~/loader/roleLoader";
 import AddBlog from "~/pages/Blogs/AddBlog";
 import Home from "~/pages/Home/Home";
+import MyAccount from "~/pages/MyAccount/MyAccount";
 import { store } from "~/redux/store";
 
 export const HomeRoutes = {
@@ -20,6 +21,10 @@ export const HomeRoutes = {
     {
       path: "/add-blog",
       element: <AddBlog />,
+    },
+    {
+      path: "/my-account",
+      element: <MyAccount />,
     },
   ],
 };

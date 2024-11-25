@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <div className="container mx-auto rounded-full h-16 bg-white border  flex justify-between items-center px-7">
-      <Link to="/auth/login">
+      <Link to="/">
         <img src={Logo} className="w-10" />
       </Link>
 
