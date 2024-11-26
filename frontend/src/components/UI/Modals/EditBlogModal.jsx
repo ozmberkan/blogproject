@@ -33,47 +33,70 @@ const EditBlogModal = ({ setEditMode, selectedBlog, user }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm z-50">
-      <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full">
+      <div className="bg-white rounded-lg shadow-lg p-6 max-w-xl w-full">
         <h2 className="text-lg font-semibold mb-4">Blog Güncelle</h2>
         <form
           className="flex flex-col gap-2"
           onSubmit={handleSubmit(editHandle)}
         >
-          <select
-            className="px-4 w-full py-2 rounded-md border outline-none"
-            type="text"
-            {...register("category")}
-          >
-            <option value="">Seçiniz..</option>
-            <option value="teknoloji">Teknoloji</option>
-            <option value="araç">Araç</option>
-            <option value="eğitim">Eğitim</option>
-            <option value="elektrik">Elektrik</option>
-            <option value="kodlama">Kodlama</option>
-          </select>
-          <select
-            className="px-4 w-full py-2 rounded-md border outline-none"
-            type="text"
-            {...register("isBanner")}
-          >
-            <option value={true}>Evet</option>
-            <option value={false}>Hayır</option>
-          </select>
-          <input
-            className="px-4 w-full py-2 rounded-md border outline-none"
-            type="text"
-            {...register("title")}
-          />
-          <input
-            className="px-4 w-full py-2 rounded-md border outline-none"
-            type="text"
-            {...register("imageURL")}
-          />
-          <textarea
-            className="px-4 py-2 rounded-md border outline-none min-h-64 max-h-64 w-full"
-            type="text"
-            {...register("content")}
-          />
+          <div className="flex flex-col gap-1">
+            <label className="text-sm font-medium text-neutral-600">
+              Kategori
+            </label>
+            <select
+              className="px-4 w-full py-2 rounded-md border outline-none"
+              type="text"
+              {...register("category")}
+            >
+              <option value="">Seçiniz..</option>
+              <option value="teknoloji">Teknoloji</option>
+              <option value="araç">Araç</option>
+              <option value="eğitim">Eğitim</option>
+              <option value="elektrik">Elektrik</option>
+              <option value="kodlama">Kodlama</option>
+            </select>
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-sm font-medium text-neutral-600">Afiş</label>
+            <select
+              className="px-4 w-full py-2 rounded-md border outline-none"
+              type="text"
+              {...register("isBanner")}
+            >
+              <option value={true}>Evet</option>
+              <option value={false}>Hayır</option>
+            </select>
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-sm font-medium text-neutral-600">
+              Başlık
+            </label>
+            <input
+              className="px-4 w-full py-2 rounded-md border outline-none"
+              type="text"
+              {...register("title")}
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-sm font-medium text-neutral-600">
+              Görsel URL
+            </label>
+            <input
+              className="px-4 w-full py-2 rounded-md border outline-none"
+              type="text"
+              {...register("imageURL")}
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-sm font-medium text-neutral-600">
+              İçerik
+            </label>
+            <textarea
+              className="px-4 py-2 rounded-md border outline-none min-h-64 max-h-64 w-full"
+              type="text"
+              {...register("content")}
+            />
+          </div>
           <div className="flex justify-end gap-x-2">
             <button
               type="submit"
