@@ -27,7 +27,7 @@ const Home = () => {
         {blogs.map((blog, i) => (
           <div
             key={blog._id}
-            className={`p-5 bg-white shadow-lg rounded-lg flex flex-col md:flex-row gap-5 transition-transform transform duration-300 hover:scale-105 ${
+            className={`p-5 bg-white shadow-lg rounded-lg flex flex-col md:flex-row gap-5 transition-transform transform duration-300  ${
               i % 2 === 0 ? "md:col-span-2" : ""
             }`}
           >
@@ -62,7 +62,7 @@ const Home = () => {
               <div className="mt-4">
                 <Link
                   to={`/detail/${blog._id}`}
-                  className="inline-block px-6 py-2 text-sm text-white bg-black rounded-md font-medium hover:bg-gray-800 transition-colors"
+                  className="inline-block px-6 py-2 text-sm text-white bg-black rounded-md font-medium hover:bg-black/70 transition-colors"
                 >
                   Daha fazla
                 </Link>

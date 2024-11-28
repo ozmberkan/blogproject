@@ -49,9 +49,6 @@ const MyAccount = () => {
       <div className="container mx-auto p-5">
         <div className="w-full flex justify-between items-center">
           <h1 className="font-bold text-3xl">Kendi Bloglarım</h1>
-          <button className="flex items-center gap-x-1 bg-green-500 text-white px-4 py-1 rounded-full">
-            <TbDatabase /> Blog Oluştur
-          </button>
         </div>
         <div className="grid grid-cols-3 gap-5 mt-5">
           {myBlogs?.blogs?.map((blog) => (
@@ -77,9 +74,9 @@ const MyAccount = () => {
                 src={blog.imageURL}
                 className="w-full max-h-[200px] object-cover rounded-xl"
               />
-              <div className="flex flex-col gap-3">
-                <span className="font-semibold text-xl">{blog.title}</span>
-                <p>{blog.content.slice(0, 200)}...</p>
+              <span className="font-semibold text-xl">{blog.title}</span>
+              <p>{blog.content.slice(0, 200)}...</p>
+              <div className="flex flex-col mt-auto w-full gap-3 ">
                 <button
                   onClick={() => deleteHandle(blog._id)}
                   className="px-4 py-2 rounded-md flex items-center justify-start gap-2 text-sm bg-red-100 text-red-600 font-semibold hover:bg-red-600 hover:text-white transition-colors border-red-600 border "

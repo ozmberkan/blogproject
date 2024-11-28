@@ -24,7 +24,6 @@ const blogSchema = new mongoose.Schema(
     },
     createdName: {
       type: String,
-      required: true,
     },
     isBanner: {
       type: Boolean,

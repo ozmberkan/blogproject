@@ -14,13 +14,21 @@ const Detail = () => {
   }, []);
 
   return (
-    <div className="container mx-auto flex flex-col">
-      {currentBlog?.category &&
-        currentBlog.category.charAt(0).toUpperCase() +
-          currentBlog.category.slice(1)}
-
-      <span>{currentBlog?.title}</span>
-      <img src={currentBlog?.imageURL} className="w-80" />
+    <div className="container mx-auto flex flex-col gap-4 p-5">
+      <div className="relative">
+        <div
+          style={{ backgroundImage: `url('${currentBlog?.imageURL}')` }}
+          className="w-full drop-shadow-2xl h-[500px] p-7 bg-cover bg-center shadow-[inset_-0px_200px_400px_#05966970] rounded-xl flex flex-col gap-5 items-start justify-start "
+        ></div>
+        <div className="absolute text-zinc-600 font-medium text-sm top-3 left-3 px-4 py-1 rounded-full bg-white">
+          <span>
+            {currentBlog?.category &&
+              currentBlog.category.charAt(0).toUpperCase() +
+                currentBlog.category.slice(1)}
+          </span>
+        </div>
+      </div>
+      <span className="text-3xl font-semibold">{currentBlog?.title}</span>
       <span className="text-sm">{currentBlog?.content}</span>
     </div>
   );
