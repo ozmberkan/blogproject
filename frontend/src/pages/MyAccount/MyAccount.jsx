@@ -7,6 +7,7 @@ import EditBlogModal from "~/components/UI/Modals/EditBlogModal";
 import { getAllBlogs, getBlogByCreatedID } from "~/redux/slices/blogSlice";
 import { TbDatabase, TbDatabaseEdit, TbTrash } from "react-icons/tb";
 import { BsTextParagraph } from "react-icons/bs";
+import dayjs from "dayjs";
 
 const MyAccount = () => {
   const { myBlogs } = useSelector((state) => state.blog);
@@ -46,7 +47,13 @@ const MyAccount = () => {
           user={user}
         />
       )}
-      <div className="container mx-auto p-5">
+      <div className="container flex flex-col  mx-auto p-5">
+        <div className="flex flex-col gap-1 mb-5">
+          <h1 className="font-bold text-3xl">Profilim</h1>
+          <div className="bg-white border shadow-xl rounded-lg p-4 flex flex-col">
+            <pre>{JSON.stringify(user, null, 2)}</pre>
+          </div>
+        </div>
         <div className="w-full flex justify-between items-center">
           <h1 className="font-bold text-3xl">Kendi Bloglarım</h1>
         </div>
@@ -54,9 +61,14 @@ const MyAccount = () => {
           {myBlogs?.blogs?.map((blog) => (
             <div className="p-4 rounded-md border shadow-xl flex flex-col gap-5 items-start">
               <div className="w-full  flex justify-between items-center">
-                <div className="text-sm font-medium text-neutral-600 px-4 py-1 rounded-full bg-neutral-100 border">
-                  {blog.category.charAt(0).toUpperCase() +
-                    blog.category.slice(1)}
+                <div className="flex items-center gap-x-1">
+                  <div className="text-sm font-medium text-neutral-600 px-4 py-1 rounded-full bg-neutral-100 border">
+                    {blog.category.charAt(0).toUpperCase() +
+                      blog.category.slice(1)}
+                  </div>
+                  <div className="text-sm font-medium text-neutral-600 px-4 py-1 rounded-full bg-neutral-100 border">
+                    {dayjs(blog.createdAt).format("DD.MM.YYYY HH:mm")}
+                  </div>
                 </div>
                 <div className="text-sm font-medium text-neutral-600">
                   {blog.isBanner === true ? (

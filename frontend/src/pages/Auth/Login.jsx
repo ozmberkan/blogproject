@@ -5,9 +5,17 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { loginService } from "~/redux/slices/userSlice";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema } from "~/validations/schema";
 
 const Login = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(loginSchema),
+  });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -33,15 +41,27 @@ const Login = () => {
         {logInputs.map((input) => (
           <div
             key={input.id}
-            className="px-4 h-10 rounded-full border-2 w-80 text-sm  flex items-center"
+            className={`px-4 h-10 rounded-full border-2 w-80 text-sm transition-colors duration-300 flex items-center ${
+              errors[input.name] ? "border-red-500 " : "border-gray-300"
+            }`}
           >
             <input
               type={input.type}
               placeholder={input.placeholder}
-              className="h-full w-full outline-none font-medium"
-              {...register(input.name)}
+              className={`h-full w-full outline-none transition-colors duration-300 font-medium ${
+                errors[input.name]
+                  ? "placeholder:text-red-500"
+                  : "text-gray-500"
+              }`}
+              {...register(input.name, { required: true })}
             />
-            <input.icon size={20} className="text-neutral-400" />
+            <input.icon
+              size={20}
+              className={`text-neutral-400 ${
+                errors[input.name] &&
+                "text-red-500 transition-colors duration-300"
+              }`}
+            />
           </div>
         ))}
 

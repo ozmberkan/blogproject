@@ -3,12 +3,19 @@ import { FcGoogle } from "react-icons/fc";
 import { regInputs } from "~/data/data";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { registerService } from "~/redux/slices/userSlice";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { registerSchema } from "~/validations/schema";
 
 const Register = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(registerSchema),
+  });
   const dispatch = useDispatch();
 
   const registerHandle = async (data) => {
@@ -32,18 +39,29 @@ const Register = () => {
         {regInputs.map((input) => (
           <div
             key={input.id}
-            className="px-4 h-10 rounded-full border-2 w-80 text-sm  flex items-center"
+            className={`px-4 h-10 rounded-full border-2 w-80 text-sm transition-colors duration-300 flex items-center ${
+              errors[input.name] ? "border-red-500 " : "border-gray-300"
+            }`}
           >
             <input
               type={input.type}
               placeholder={input.placeholder}
-              className="h-full w-full outline-none font-medium"
-              {...register(input.name)}
+              className={`h-full w-full outline-none transition-colors duration-300 font-medium ${
+                errors[input.name]
+                  ? "placeholder:text-red-500"
+                  : "text-gray-500"
+              }`}
+              {...register(input.name, { required: true })}
             />
-            <input.icon size={20} className="text-neutral-400" />
+            <input.icon
+              size={20}
+              className={`text-neutral-400 ${
+                errors[input.name] &&
+                "text-red-500 transition-colors duration-300"
+              }`}
+            />
           </div>
         ))}
-
         <div className="w-full px-2 flex justify-between items-center">
           <Link
             to="/auth/login"
@@ -62,7 +80,6 @@ const Register = () => {
           <span className="px-4 text-gray-500 text-sm">YA DA</span>
           <div className="flex-grow border-t border-gray-300"></div>
         </div>
-
         <button
           type="button"
           className="flex bg-white w-full gap-x-2 items-center border px-4 py-2 rounded-full font-semibold justify-center hover:bg-slate-50 transition-colors duration-300"
