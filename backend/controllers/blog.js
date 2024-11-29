@@ -2,7 +2,16 @@ const Blog = require("../models/blog.js");
 
 const createBlog = async (req, res) => {
   try {
-    const { title, content, imageURL, category, createdBy } = req.body;
+    const {
+      title,
+      content,
+      category,
+      imageURL,
+      createdBy,
+      createdName,
+      createdPhoto,
+      isBanner,
+    } = req.body;
 
     if (!title || !content || !imageURL || !category) {
       return res.status(400).json({ message: "Tüm alanları doldurunuz" });
@@ -14,6 +23,9 @@ const createBlog = async (req, res) => {
       imageURL,
       category,
       createdBy,
+      createdName,
+      createdPhoto,
+      isBanner,
     });
 
     res.status(201).json({ message: "Blog başarıyla oluşturuldu", blog });

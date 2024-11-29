@@ -24,6 +24,11 @@ const blogSchema = new mongoose.Schema(
     },
     createdName: {
       type: String,
+      default: "",
+    },
+    createdPhoto: {
+      type: String,
+      default: "",
     },
     isBanner: {
       type: Boolean,

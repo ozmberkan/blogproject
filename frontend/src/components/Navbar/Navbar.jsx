@@ -43,20 +43,19 @@ const Navbar = () => {
           <div className="flex gap-x-2 items-center">
             <button
               onClick={() => setIsCreateOpenModal(true)}
-              className="font-medium flex items-center gap-x-1 text-sm  hover:bg-white transition-colors px-4 py-2 rounded-md  text-black hover:text-[#0A936C]"
+              className="font-medium border gap-x-1 text-xs  hover:border-[#0A936c]  hover:bg-white transition-colors w-32 flex justify-center items-center h-8 rounded-full  text-black hover:text-[#0A936C]"
             >
               <TbPlus size={18} />
               Blog Oluştur
             </button>
             <Link
               to="/my-account"
-              className="font-medium flex items-center gap-x-1 text-sm bg-[#0A936C] hover:border hover:border-[#0A936c] border hover:bg-white hover:text-[#0A936c] border-transparent transition-colors px-4 py-2 rounded-md text-white "
-            >
-              <TbUser size={18} />
-            </Link>
+              style={{ backgroundImage: `url(${user?.photoURL})` }}
+              className="font-medium bg-center h-8 w-8 bg-cover flex items-center gap-x-1 text-sm bg-[#0A936C] hover:border hover:border-[#0A936c] border hover:bg-white hover:text-[#0A936c] border-transparent transition-colors px-4 py-2 rounded-full text-white "
+            ></Link>
             <button
               onClick={handleLogout}
-              className="font-medium text-sm bg-red-600 hover:bg-red-800 transition-colors px-4 py-2 rounded-md text-white"
+              className="font-medium text-sm flex justify-center items-center bg-red-600 hover:bg-red-800 transition-colors rounded-full w-8 h-8 text-white"
             >
               <TbDoorExit size={18} />
             </button>

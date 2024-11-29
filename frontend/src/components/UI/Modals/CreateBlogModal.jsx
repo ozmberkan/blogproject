@@ -21,8 +21,9 @@ const CreateBlogModal = ({ setIsCreateOpenModal }) => {
     try {
       const blogData = {
         ...data,
-        createdBy: user._id,
-        createdName: user.username,
+        createdBy: user._id, // Kullanıcı ID'si
+        createdName: user.username, // Kullanıcı adı
+        createdPhoto: user?.photoURL || "", // Kullanıcı fotoğrafı (varsayılan boş)
       };
       const response = await axios.post(
         "http://localhost:5002/api/blog/create",

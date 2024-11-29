@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -15,6 +16,20 @@ const Detail = () => {
 
   return (
     <div className="container mx-auto flex flex-col gap-4 p-5">
+      <div className="w-full  flex items-center  justify-between">
+        <div className="flex items-center gap-x-2">
+          <img
+            src={currentBlog?.createdPhoto}
+            className="w-10 h-10 rounded-full"
+          />
+          <span className="font-medium text-zinc-500">
+            @{currentBlog?.createdName}
+          </span>
+        </div>
+        <span className="text-xs text-zinc-500">
+          {dayjs(currentBlog?.createdAt).format("DD.MM.YYYY HH:mm")}
+        </span>
+      </div>
       <div className="relative">
         <div
           style={{ backgroundImage: `url('${currentBlog?.imageURL}')` }}
