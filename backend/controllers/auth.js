@@ -82,6 +82,32 @@ const login = async (req, res) => {
   }
 };
 
+const update = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Güncelleme işlemi
+    const updatedUser = await Auth.findByIdAndUpdate(id, req.body, {
+      new: true, // Güncellenmiş veriyi döndürür
+      runValidators: true, // Validasyonları çalıştırır
+    });
+
+    // Kullanıcı bulunamadığında 404 yanıtı gönder
+    if (!updatedUser) {
+      return res.status(404).json({ message: "Kullanıcı bulunamadı!" });
+    }
+
+    // Başarılı işlem yanıtı
+    res.status(200).json({
+      status: "OK",
+      updatedUser,
+    });
+  } catch (error) {
+    console.error(error); // Hata logu
+    return res.status(500).json({ message: "Sunucu Hatası" });
+  }
+};
+
 const logout = (req, res) => {
   try {
     res.clearCookie("authToken");
@@ -91,4 +117,4 @@ const logout = (req, res) => {
   }
 };
 
-module.exports = { register, login, logout };
+module.exports = { register, login, logout, update };

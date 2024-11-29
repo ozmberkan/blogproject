@@ -18,6 +18,10 @@ const authSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    photoURL: {
+      type: String,
+      default: "",
+    },
     role: {
       type: String,
       default: "user",
